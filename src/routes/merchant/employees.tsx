@@ -89,10 +89,10 @@ const statusConfig: Record<Employee["status"], { label: string; className: strin
   };
 
 const avatarGradients = [
-  "from-violet-500 to-fuchsia-500",
-  "from-pink-500 to-rose-500",
-  "from-cyan-500 to-blue-500",
-  "from-amber-400 to-orange-500",
+  "from-teal-600 to-cyan-500",
+  "from-sky-700 to-blue-500",
+  "from-amber-500 to-yellow-400",
+  "from-emerald-600 to-teal-500",
   "from-emerald-500 to-teal-500",
 ];
 
@@ -359,7 +359,7 @@ function EmployeesPage() {
         <DialogContent className="max-h-[92vh] overflow-y-auto sm:max-w-3xl" dir="rtl">
           {employeeDraft && selectedEmployee && (
             <>
-              <div className="relative -mx-6 -mt-6 overflow-hidden rounded-t-lg bg-gradient-to-l from-primary via-violet-600 to-fuchsia-500 px-6 pb-6 pt-8 text-white">
+              <div className="relative -mx-6 -mt-6 overflow-hidden rounded-t-lg bg-gradient-hero px-6 pb-6 pt-8 text-white">
                 <div className="absolute -left-12 -top-16 h-44 w-44 rounded-full bg-white/10 blur-2xl" />
                 <div className="relative flex items-center gap-4">
                   <Avatar className="h-20 w-20 border-4 border-white/25 shadow-xl">
@@ -590,7 +590,7 @@ function EmployeeCard({
       )}
     >
       {!compact && (
-        <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-l from-primary via-fuchsia-500 to-pink-400" />
+        <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-l from-primary via-teal-500 to-amber-400" />
       )}
       <div className={cn("flex items-start gap-3", compact && "sm:min-w-64")}>
         <Avatar className="h-14 w-14 border-2 border-background shadow-soft ring-4 ring-primary/5">

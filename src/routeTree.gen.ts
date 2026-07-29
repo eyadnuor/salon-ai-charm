@@ -25,7 +25,10 @@ import { Route as ClientIndexRouteImport } from './routes/client/index'
 import { Route as ClientSplatRouteImport } from './routes/client/$'
 import { Route as MerchantIndexRouteImport } from './routes/merchant/index'
 import { Route as MerchantSplatRouteImport } from './routes/merchant/$'
+import { Route as MerchantBookingsRouteImport } from './routes/merchant/bookings'
+import { Route as MerchantCustomersRouteImport } from './routes/merchant/customers'
 import { Route as MerchantEmployeesRouteImport } from './routes/merchant/employees'
+import { Route as MerchantServicesRouteImport } from './routes/merchant/services'
 import { Route as StaffIndexRouteImport } from './routes/staff/index'
 import { Route as StaffSplatRouteImport } from './routes/staff/$'
 
@@ -109,9 +112,24 @@ const MerchantSplatRoute = MerchantSplatRouteImport.update({
   path: '/merchant/$',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MerchantBookingsRoute = MerchantBookingsRouteImport.update({
+  id: '/merchant/bookings',
+  path: '/merchant/bookings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MerchantCustomersRoute = MerchantCustomersRouteImport.update({
+  id: '/merchant/customers',
+  path: '/merchant/customers',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MerchantEmployeesRoute = MerchantEmployeesRouteImport.update({
   id: '/merchant/employees',
   path: '/merchant/employees',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MerchantServicesRoute = MerchantServicesRouteImport.update({
+  id: '/merchant/services',
+  path: '/merchant/services',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StaffIndexRoute = StaffIndexRouteImport.update({
@@ -139,7 +157,10 @@ export interface FileRoutesByFullPath {
   '/auth/role-select': typeof AuthRoleSelectRoute
   '/client/$': typeof ClientSplatRoute
   '/merchant/$': typeof MerchantSplatRoute
+  '/merchant/bookings': typeof MerchantBookingsRoute
+  '/merchant/customers': typeof MerchantCustomersRoute
   '/merchant/employees': typeof MerchantEmployeesRoute
+  '/merchant/services': typeof MerchantServicesRoute
   '/staff/$': typeof StaffSplatRoute
   '/admin/': typeof AdminIndexRoute
   '/client/': typeof ClientIndexRoute
@@ -160,7 +181,10 @@ export interface FileRoutesByTo {
   '/auth/role-select': typeof AuthRoleSelectRoute
   '/client/$': typeof ClientSplatRoute
   '/merchant/$': typeof MerchantSplatRoute
+  '/merchant/bookings': typeof MerchantBookingsRoute
+  '/merchant/customers': typeof MerchantCustomersRoute
   '/merchant/employees': typeof MerchantEmployeesRoute
+  '/merchant/services': typeof MerchantServicesRoute
   '/staff/$': typeof StaffSplatRoute
   '/admin': typeof AdminIndexRoute
   '/client': typeof ClientIndexRoute
@@ -182,7 +206,10 @@ export interface FileRoutesById {
   '/auth/role-select': typeof AuthRoleSelectRoute
   '/client/$': typeof ClientSplatRoute
   '/merchant/$': typeof MerchantSplatRoute
+  '/merchant/bookings': typeof MerchantBookingsRoute
+  '/merchant/customers': typeof MerchantCustomersRoute
   '/merchant/employees': typeof MerchantEmployeesRoute
+  '/merchant/services': typeof MerchantServicesRoute
   '/staff/$': typeof StaffSplatRoute
   '/admin/': typeof AdminIndexRoute
   '/client/': typeof ClientIndexRoute
@@ -205,7 +232,10 @@ export interface FileRouteTypes {
     | '/auth/role-select'
     | '/client/$'
     | '/merchant/$'
+    | '/merchant/bookings'
+    | '/merchant/customers'
     | '/merchant/employees'
+    | '/merchant/services'
     | '/staff/$'
     | '/admin/'
     | '/client/'
@@ -226,7 +256,10 @@ export interface FileRouteTypes {
     | '/auth/role-select'
     | '/client/$'
     | '/merchant/$'
+    | '/merchant/bookings'
+    | '/merchant/customers'
     | '/merchant/employees'
+    | '/merchant/services'
     | '/staff/$'
     | '/admin'
     | '/client'
@@ -247,7 +280,10 @@ export interface FileRouteTypes {
     | '/auth/role-select'
     | '/client/$'
     | '/merchant/$'
+    | '/merchant/bookings'
+    | '/merchant/customers'
     | '/merchant/employees'
+    | '/merchant/services'
     | '/staff/$'
     | '/admin/'
     | '/client/'
@@ -269,7 +305,10 @@ export interface RootRouteChildren {
   AuthRoleSelectRoute: typeof AuthRoleSelectRoute
   ClientSplatRoute: typeof ClientSplatRoute
   MerchantSplatRoute: typeof MerchantSplatRoute
+  MerchantBookingsRoute: typeof MerchantBookingsRoute
+  MerchantCustomersRoute: typeof MerchantCustomersRoute
   MerchantEmployeesRoute: typeof MerchantEmployeesRoute
+  MerchantServicesRoute: typeof MerchantServicesRoute
   StaffSplatRoute: typeof StaffSplatRoute
   AdminIndexRoute: typeof AdminIndexRoute
   ClientIndexRoute: typeof ClientIndexRoute
@@ -391,11 +430,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MerchantSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/merchant/bookings': {
+      id: '/merchant/bookings'
+      path: '/merchant/bookings'
+      fullPath: '/merchant/bookings'
+      preLoaderRoute: typeof MerchantBookingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/merchant/customers': {
+      id: '/merchant/customers'
+      path: '/merchant/customers'
+      fullPath: '/merchant/customers'
+      preLoaderRoute: typeof MerchantCustomersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/merchant/employees': {
       id: '/merchant/employees'
       path: '/merchant/employees'
       fullPath: '/merchant/employees'
       preLoaderRoute: typeof MerchantEmployeesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/merchant/services': {
+      id: '/merchant/services'
+      path: '/merchant/services'
+      fullPath: '/merchant/services'
+      preLoaderRoute: typeof MerchantServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/staff/': {
@@ -429,7 +489,10 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoleSelectRoute: AuthRoleSelectRoute,
   ClientSplatRoute: ClientSplatRoute,
   MerchantSplatRoute: MerchantSplatRoute,
+  MerchantBookingsRoute: MerchantBookingsRoute,
+  MerchantCustomersRoute: MerchantCustomersRoute,
   MerchantEmployeesRoute: MerchantEmployeesRoute,
+  MerchantServicesRoute: MerchantServicesRoute,
   StaffSplatRoute: StaffSplatRoute,
   AdminIndexRoute: AdminIndexRoute,
   ClientIndexRoute: ClientIndexRoute,
