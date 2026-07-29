@@ -9,47 +9,31 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as AboutRouteImport } from './routes/about'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as PricingRouteImport } from './routes/pricing'
-import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as TermsRouteImport } from './routes/terms'
-import { Route as AdminIndexRouteImport } from './routes/admin/index'
-import { Route as AdminSplatRouteImport } from './routes/admin/$'
-import { Route as AuthForgotRouteImport } from './routes/auth/forgot'
-import { Route as AuthLoginRouteImport } from './routes/auth/login'
-import { Route as AuthRegisterRouteImport } from './routes/auth/register'
-import { Route as AuthRoleSelectRouteImport } from './routes/auth/role-select'
-import { Route as ClientIndexRouteImport } from './routes/client/index'
-import { Route as ClientSplatRouteImport } from './routes/client/$'
-import { Route as MerchantIndexRouteImport } from './routes/merchant/index'
-import { Route as MerchantSplatRouteImport } from './routes/merchant/$'
-import { Route as MerchantBookingsRouteImport } from './routes/merchant/bookings'
-import { Route as MerchantCustomersRouteImport } from './routes/merchant/customers'
-import { Route as MerchantEmployeesRouteImport } from './routes/merchant/employees'
-import { Route as MerchantServicesRouteImport } from './routes/merchant/services'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as IndexRouteImport } from './routes/index'
 import { Route as StaffIndexRouteImport } from './routes/staff/index'
+import { Route as MerchantIndexRouteImport } from './routes/merchant/index'
+import { Route as ClientIndexRouteImport } from './routes/client/index'
+import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as StaffSplatRouteImport } from './routes/staff/$'
+import { Route as MerchantSplatRouteImport } from './routes/merchant/$'
+import { Route as MerchantServicesRouteImport } from './routes/merchant/services'
+import { Route as MerchantCustomersRouteImport } from './routes/merchant/customers'
+import { Route as MerchantBookingsRouteImport } from './routes/merchant/bookings'
+import { Route as ClientSplatRouteImport } from './routes/client/$'
+import { Route as AuthRoleSelectRouteImport } from './routes/auth/role-select'
+import { Route as AuthRegisterRouteImport } from './routes/auth/register'
+import { Route as AuthLoginRouteImport } from './routes/auth/login'
+import { Route as AuthForgotRouteImport } from './routes/auth/forgot'
+import { Route as AdminSplatRouteImport } from './routes/admin/$'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PricingRoute = PricingRouteImport.update({
-  id: '/pricing',
-  path: '/pricing',
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -57,79 +41,24 @@ const PrivacyRoute = PrivacyRouteImport.update({
   path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
-const TermsRoute = TermsRouteImport.update({
-  id: '/terms',
-  path: '/terms',
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AdminIndexRoute = AdminIndexRouteImport.update({
-  id: '/admin/',
-  path: '/admin/',
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AdminSplatRoute = AdminSplatRouteImport.update({
-  id: '/admin/$',
-  path: '/admin/$',
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthForgotRoute = AuthForgotRouteImport.update({
-  id: '/auth/forgot',
-  path: '/auth/forgot',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthLoginRoute = AuthLoginRouteImport.update({
-  id: '/auth/login',
-  path: '/auth/login',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthRegisterRoute = AuthRegisterRouteImport.update({
-  id: '/auth/register',
-  path: '/auth/register',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthRoleSelectRoute = AuthRoleSelectRouteImport.update({
-  id: '/auth/role-select',
-  path: '/auth/role-select',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ClientIndexRoute = ClientIndexRouteImport.update({
-  id: '/client/',
-  path: '/client/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ClientSplatRoute = ClientSplatRouteImport.update({
-  id: '/client/$',
-  path: '/client/$',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MerchantIndexRoute = MerchantIndexRouteImport.update({
-  id: '/merchant/',
-  path: '/merchant/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MerchantSplatRoute = MerchantSplatRouteImport.update({
-  id: '/merchant/$',
-  path: '/merchant/$',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MerchantBookingsRoute = MerchantBookingsRouteImport.update({
-  id: '/merchant/bookings',
-  path: '/merchant/bookings',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MerchantCustomersRoute = MerchantCustomersRouteImport.update({
-  id: '/merchant/customers',
-  path: '/merchant/customers',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MerchantEmployeesRoute = MerchantEmployeesRouteImport.update({
-  id: '/merchant/employees',
-  path: '/merchant/employees',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MerchantServicesRoute = MerchantServicesRouteImport.update({
-  id: '/merchant/services',
-  path: '/merchant/services',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StaffIndexRoute = StaffIndexRouteImport.update({
@@ -137,9 +66,74 @@ const StaffIndexRoute = StaffIndexRouteImport.update({
   path: '/staff/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MerchantIndexRoute = MerchantIndexRouteImport.update({
+  id: '/merchant/',
+  path: '/merchant/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClientIndexRoute = ClientIndexRouteImport.update({
+  id: '/client/',
+  path: '/client/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/admin/',
+  path: '/admin/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StaffSplatRoute = StaffSplatRouteImport.update({
   id: '/staff/$',
   path: '/staff/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MerchantSplatRoute = MerchantSplatRouteImport.update({
+  id: '/merchant/$',
+  path: '/merchant/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MerchantServicesRoute = MerchantServicesRouteImport.update({
+  id: '/merchant/services',
+  path: '/merchant/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MerchantCustomersRoute = MerchantCustomersRouteImport.update({
+  id: '/merchant/customers',
+  path: '/merchant/customers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MerchantBookingsRoute = MerchantBookingsRouteImport.update({
+  id: '/merchant/bookings',
+  path: '/merchant/bookings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClientSplatRoute = ClientSplatRouteImport.update({
+  id: '/client/$',
+  path: '/client/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoleSelectRoute = AuthRoleSelectRouteImport.update({
+  id: '/auth/role-select',
+  path: '/auth/role-select',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRegisterRoute = AuthRegisterRouteImport.update({
+  id: '/auth/register',
+  path: '/auth/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthLoginRoute = AuthLoginRouteImport.update({
+  id: '/auth/login',
+  path: '/auth/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthForgotRoute = AuthForgotRouteImport.update({
+  id: '/auth/forgot',
+  path: '/auth/forgot',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminSplatRoute = AdminSplatRouteImport.update({
+  id: '/admin/$',
+  path: '/admin/$',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -159,7 +153,6 @@ export interface FileRoutesByFullPath {
   '/merchant/$': typeof MerchantSplatRoute
   '/merchant/bookings': typeof MerchantBookingsRoute
   '/merchant/customers': typeof MerchantCustomersRoute
-  '/merchant/employees': typeof MerchantEmployeesRoute
   '/merchant/services': typeof MerchantServicesRoute
   '/staff/$': typeof StaffSplatRoute
   '/admin/': typeof AdminIndexRoute
@@ -183,7 +176,6 @@ export interface FileRoutesByTo {
   '/merchant/$': typeof MerchantSplatRoute
   '/merchant/bookings': typeof MerchantBookingsRoute
   '/merchant/customers': typeof MerchantCustomersRoute
-  '/merchant/employees': typeof MerchantEmployeesRoute
   '/merchant/services': typeof MerchantServicesRoute
   '/staff/$': typeof StaffSplatRoute
   '/admin': typeof AdminIndexRoute
@@ -208,7 +200,6 @@ export interface FileRoutesById {
   '/merchant/$': typeof MerchantSplatRoute
   '/merchant/bookings': typeof MerchantBookingsRoute
   '/merchant/customers': typeof MerchantCustomersRoute
-  '/merchant/employees': typeof MerchantEmployeesRoute
   '/merchant/services': typeof MerchantServicesRoute
   '/staff/$': typeof StaffSplatRoute
   '/admin/': typeof AdminIndexRoute
@@ -234,7 +225,6 @@ export interface FileRouteTypes {
     | '/merchant/$'
     | '/merchant/bookings'
     | '/merchant/customers'
-    | '/merchant/employees'
     | '/merchant/services'
     | '/staff/$'
     | '/admin/'
@@ -258,7 +248,6 @@ export interface FileRouteTypes {
     | '/merchant/$'
     | '/merchant/bookings'
     | '/merchant/customers'
-    | '/merchant/employees'
     | '/merchant/services'
     | '/staff/$'
     | '/admin'
@@ -282,7 +271,6 @@ export interface FileRouteTypes {
     | '/merchant/$'
     | '/merchant/bookings'
     | '/merchant/customers'
-    | '/merchant/employees'
     | '/merchant/services'
     | '/staff/$'
     | '/admin/'
@@ -305,10 +293,9 @@ export interface RootRouteChildren {
   AuthRoleSelectRoute: typeof AuthRoleSelectRoute
   ClientSplatRoute: typeof ClientSplatRoute
   MerchantSplatRoute: typeof MerchantSplatRoute
-  MerchantBookingsRoute: typeof MerchantBookingsRoute
-  MerchantCustomersRoute: typeof MerchantCustomersRoute
-  MerchantEmployeesRoute: typeof MerchantEmployeesRoute
   MerchantServicesRoute: typeof MerchantServicesRoute
+  MerchantCustomersRoute: typeof MerchantCustomersRoute
+  MerchantBookingsRoute: typeof MerchantBookingsRoute
   StaffSplatRoute: typeof StaffSplatRoute
   AdminIndexRoute: typeof AdminIndexRoute
   ClientIndexRoute: typeof ClientIndexRoute
@@ -318,32 +305,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/pricing': {
-      id: '/pricing'
-      path: '/pricing'
-      fullPath: '/pricing'
-      preLoaderRoute: typeof PricingRouteImport
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -353,109 +319,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/terms': {
-      id: '/terms'
-      path: '/terms'
-      fullPath: '/terms'
-      preLoaderRoute: typeof TermsRouteImport
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/admin/': {
-      id: '/admin/'
-      path: '/admin'
-      fullPath: '/admin/'
-      preLoaderRoute: typeof AdminIndexRouteImport
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/admin/$': {
-      id: '/admin/$'
-      path: '/admin/$'
-      fullPath: '/admin/$'
-      preLoaderRoute: typeof AdminSplatRouteImport
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/auth/forgot': {
-      id: '/auth/forgot'
-      path: '/auth/forgot'
-      fullPath: '/auth/forgot'
-      preLoaderRoute: typeof AuthForgotRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/auth/login': {
-      id: '/auth/login'
-      path: '/auth/login'
-      fullPath: '/auth/login'
-      preLoaderRoute: typeof AuthLoginRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/auth/register': {
-      id: '/auth/register'
-      path: '/auth/register'
-      fullPath: '/auth/register'
-      preLoaderRoute: typeof AuthRegisterRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/auth/role-select': {
-      id: '/auth/role-select'
-      path: '/auth/role-select'
-      fullPath: '/auth/role-select'
-      preLoaderRoute: typeof AuthRoleSelectRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/client/': {
-      id: '/client/'
-      path: '/client'
-      fullPath: '/client/'
-      preLoaderRoute: typeof ClientIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/client/$': {
-      id: '/client/$'
-      path: '/client/$'
-      fullPath: '/client/$'
-      preLoaderRoute: typeof ClientSplatRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/merchant/': {
-      id: '/merchant/'
-      path: '/merchant'
-      fullPath: '/merchant/'
-      preLoaderRoute: typeof MerchantIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/merchant/$': {
-      id: '/merchant/$'
-      path: '/merchant/$'
-      fullPath: '/merchant/$'
-      preLoaderRoute: typeof MerchantSplatRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/merchant/bookings': {
-      id: '/merchant/bookings'
-      path: '/merchant/bookings'
-      fullPath: '/merchant/bookings'
-      preLoaderRoute: typeof MerchantBookingsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/merchant/customers': {
-      id: '/merchant/customers'
-      path: '/merchant/customers'
-      fullPath: '/merchant/customers'
-      preLoaderRoute: typeof MerchantCustomersRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/merchant/employees': {
-      id: '/merchant/employees'
-      path: '/merchant/employees'
-      fullPath: '/merchant/employees'
-      preLoaderRoute: typeof MerchantEmployeesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/merchant/services': {
-      id: '/merchant/services'
-      path: '/merchant/services'
-      fullPath: '/merchant/services'
-      preLoaderRoute: typeof MerchantServicesRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/staff/': {
@@ -465,11 +354,102 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StaffIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/merchant/': {
+      id: '/merchant/'
+      path: '/merchant'
+      fullPath: '/merchant/'
+      preLoaderRoute: typeof MerchantIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/client/': {
+      id: '/client/'
+      path: '/client'
+      fullPath: '/client/'
+      preLoaderRoute: typeof ClientIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/': {
+      id: '/admin/'
+      path: '/admin'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/staff/$': {
       id: '/staff/$'
       path: '/staff/$'
       fullPath: '/staff/$'
       preLoaderRoute: typeof StaffSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/merchant/$': {
+      id: '/merchant/$'
+      path: '/merchant/$'
+      fullPath: '/merchant/$'
+      preLoaderRoute: typeof MerchantSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/merchant/services': {
+      id: '/merchant/services'
+      path: '/merchant/services'
+      fullPath: '/merchant/services'
+      preLoaderRoute: typeof MerchantServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/merchant/customers': {
+      id: '/merchant/customers'
+      path: '/merchant/customers'
+      fullPath: '/merchant/customers'
+      preLoaderRoute: typeof MerchantCustomersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/merchant/bookings': {
+      id: '/merchant/bookings'
+      path: '/merchant/bookings'
+      fullPath: '/merchant/bookings'
+      preLoaderRoute: typeof MerchantBookingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/client/$': {
+      id: '/client/$'
+      path: '/client/$'
+      fullPath: '/client/$'
+      preLoaderRoute: typeof ClientSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/role-select': {
+      id: '/auth/role-select'
+      path: '/auth/role-select'
+      fullPath: '/auth/role-select'
+      preLoaderRoute: typeof AuthRoleSelectRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/register': {
+      id: '/auth/register'
+      path: '/auth/register'
+      fullPath: '/auth/register'
+      preLoaderRoute: typeof AuthRegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/login': {
+      id: '/auth/login'
+      path: '/auth/login'
+      fullPath: '/auth/login'
+      preLoaderRoute: typeof AuthLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/forgot': {
+      id: '/auth/forgot'
+      path: '/auth/forgot'
+      fullPath: '/auth/forgot'
+      preLoaderRoute: typeof AuthForgotRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/$': {
+      id: '/admin/$'
+      path: '/admin/$'
+      fullPath: '/admin/$'
+      preLoaderRoute: typeof AdminSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -489,10 +469,9 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoleSelectRoute: AuthRoleSelectRoute,
   ClientSplatRoute: ClientSplatRoute,
   MerchantSplatRoute: MerchantSplatRoute,
-  MerchantBookingsRoute: MerchantBookingsRoute,
-  MerchantCustomersRoute: MerchantCustomersRoute,
-  MerchantEmployeesRoute: MerchantEmployeesRoute,
   MerchantServicesRoute: MerchantServicesRoute,
+  MerchantCustomersRoute: MerchantCustomersRoute,
+  MerchantBookingsRoute: MerchantBookingsRoute,
   StaffSplatRoute: StaffSplatRoute,
   AdminIndexRoute: AdminIndexRoute,
   ClientIndexRoute: ClientIndexRoute,
@@ -502,13 +481,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
