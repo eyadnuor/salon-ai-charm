@@ -22,6 +22,7 @@ import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as StaffSplatRouteImport } from './routes/staff/$'
 import { Route as MerchantSplatRouteImport } from './routes/merchant/$'
 import { Route as MerchantServicesRouteImport } from './routes/merchant/services'
+import { Route as MerchantEmployeesRouteImport } from './routes/merchant/employees'
 import { Route as MerchantCustomersRouteImport } from './routes/merchant/customers'
 import { Route as MerchantBookingsRouteImport } from './routes/merchant/bookings'
 import { Route as ClientSplatRouteImport } from './routes/client/$'
@@ -96,6 +97,11 @@ const MerchantServicesRoute = MerchantServicesRouteImport.update({
   path: '/merchant/services',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MerchantEmployeesRoute = MerchantEmployeesRouteImport.update({
+  id: '/merchant/employees',
+  path: '/merchant/employees',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MerchantCustomersRoute = MerchantCustomersRouteImport.update({
   id: '/merchant/customers',
   path: '/merchant/customers',
@@ -154,6 +160,7 @@ export interface FileRoutesByFullPath {
   '/merchant/bookings': typeof MerchantBookingsRoute
   '/merchant/customers': typeof MerchantCustomersRoute
   '/merchant/services': typeof MerchantServicesRoute
+  '/merchant/employees': typeof MerchantEmployeesRoute
   '/staff/$': typeof StaffSplatRoute
   '/admin/': typeof AdminIndexRoute
   '/client/': typeof ClientIndexRoute
@@ -177,6 +184,7 @@ export interface FileRoutesByTo {
   '/merchant/bookings': typeof MerchantBookingsRoute
   '/merchant/customers': typeof MerchantCustomersRoute
   '/merchant/services': typeof MerchantServicesRoute
+  '/merchant/employees': typeof MerchantEmployeesRoute
   '/staff/$': typeof StaffSplatRoute
   '/admin': typeof AdminIndexRoute
   '/client': typeof ClientIndexRoute
@@ -201,6 +209,7 @@ export interface FileRoutesById {
   '/merchant/bookings': typeof MerchantBookingsRoute
   '/merchant/customers': typeof MerchantCustomersRoute
   '/merchant/services': typeof MerchantServicesRoute
+  '/merchant/employees': typeof MerchantEmployeesRoute
   '/staff/$': typeof StaffSplatRoute
   '/admin/': typeof AdminIndexRoute
   '/client/': typeof ClientIndexRoute
@@ -226,6 +235,7 @@ export interface FileRouteTypes {
     | '/merchant/bookings'
     | '/merchant/customers'
     | '/merchant/services'
+    | '/merchant/employees'
     | '/staff/$'
     | '/admin/'
     | '/client/'
@@ -249,6 +259,7 @@ export interface FileRouteTypes {
     | '/merchant/bookings'
     | '/merchant/customers'
     | '/merchant/services'
+    | '/merchant/employees'
     | '/staff/$'
     | '/admin'
     | '/client'
@@ -272,6 +283,7 @@ export interface FileRouteTypes {
     | '/merchant/bookings'
     | '/merchant/customers'
     | '/merchant/services'
+    | '/merchant/employees'
     | '/staff/$'
     | '/admin/'
     | '/client/'
@@ -294,6 +306,7 @@ export interface RootRouteChildren {
   ClientSplatRoute: typeof ClientSplatRoute
   MerchantSplatRoute: typeof MerchantSplatRoute
   MerchantServicesRoute: typeof MerchantServicesRoute
+  MerchantEmployeesRoute: typeof MerchantEmployeesRoute
   MerchantCustomersRoute: typeof MerchantCustomersRoute
   MerchantBookingsRoute: typeof MerchantBookingsRoute
   StaffSplatRoute: typeof StaffSplatRoute
@@ -396,6 +409,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MerchantServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/merchant/employees': {
+      id: '/merchant/employees'
+      path: '/merchant/employees'
+      fullPath: '/merchant/employees'
+      preLoaderRoute: typeof MerchantEmployeesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/merchant/customers': {
       id: '/merchant/customers'
       path: '/merchant/customers'
@@ -470,6 +490,7 @@ const rootRouteChildren: RootRouteChildren = {
   ClientSplatRoute: ClientSplatRoute,
   MerchantSplatRoute: MerchantSplatRoute,
   MerchantServicesRoute: MerchantServicesRoute,
+  MerchantEmployeesRoute: MerchantEmployeesRoute,
   MerchantCustomersRoute: MerchantCustomersRoute,
   MerchantBookingsRoute: MerchantBookingsRoute,
   StaffSplatRoute: StaffSplatRoute,
