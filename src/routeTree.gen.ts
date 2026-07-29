@@ -9,43 +9,29 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TermsRouteImport } from './routes/terms'
-import { Route as PrivacyRouteImport } from './routes/privacy'
-import { Route as PricingRouteImport } from './routes/pricing'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as StaffIndexRouteImport } from './routes/staff/index'
-import { Route as MerchantIndexRouteImport } from './routes/merchant/index'
-import { Route as ClientIndexRouteImport } from './routes/client/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
-import { Route as StaffSplatRouteImport } from './routes/staff/$'
-import { Route as MerchantSplatRouteImport } from './routes/merchant/$'
-import { Route as ClientSplatRouteImport } from './routes/client/$'
-import { Route as AuthRoleSelectRouteImport } from './routes/auth/role-select'
-import { Route as AuthRegisterRouteImport } from './routes/auth/register'
-import { Route as AuthLoginRouteImport } from './routes/auth/login'
-import { Route as AuthForgotRouteImport } from './routes/auth/forgot'
 import { Route as AdminSplatRouteImport } from './routes/admin/$'
+import { Route as AuthForgotRouteImport } from './routes/auth/forgot'
+import { Route as AuthLoginRouteImport } from './routes/auth/login'
+import { Route as AuthRegisterRouteImport } from './routes/auth/register'
+import { Route as AuthRoleSelectRouteImport } from './routes/auth/role-select'
+import { Route as ClientIndexRouteImport } from './routes/client/index'
+import { Route as ClientSplatRouteImport } from './routes/client/$'
+import { Route as MerchantIndexRouteImport } from './routes/merchant/index'
+import { Route as MerchantSplatRouteImport } from './routes/merchant/$'
+import { Route as MerchantEmployeesRouteImport } from './routes/merchant/employees'
+import { Route as StaffIndexRouteImport } from './routes/staff/index'
+import { Route as StaffSplatRouteImport } from './routes/staff/$'
 
-const TermsRoute = TermsRouteImport.update({
-  id: '/terms',
-  path: '/terms',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PrivacyRoute = PrivacyRouteImport.update({
-  id: '/privacy',
-  path: '/privacy',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PricingRoute = PricingRouteImport.update({
-  id: '/pricing',
-  path: '/pricing',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -53,24 +39,24 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
-const StaffIndexRoute = StaffIndexRouteImport.update({
-  id: '/staff/',
-  path: '/staff/',
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
-const MerchantIndexRoute = MerchantIndexRouteImport.update({
-  id: '/merchant/',
-  path: '/merchant/',
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ClientIndexRoute = ClientIndexRouteImport.update({
-  id: '/client/',
-  path: '/client/',
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminIndexRoute = AdminIndexRouteImport.update({
@@ -78,34 +64,9 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
   path: '/admin/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const StaffSplatRoute = StaffSplatRouteImport.update({
-  id: '/staff/$',
-  path: '/staff/$',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MerchantSplatRoute = MerchantSplatRouteImport.update({
-  id: '/merchant/$',
-  path: '/merchant/$',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ClientSplatRoute = ClientSplatRouteImport.update({
-  id: '/client/$',
-  path: '/client/$',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthRoleSelectRoute = AuthRoleSelectRouteImport.update({
-  id: '/auth/role-select',
-  path: '/auth/role-select',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthRegisterRoute = AuthRegisterRouteImport.update({
-  id: '/auth/register',
-  path: '/auth/register',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthLoginRoute = AuthLoginRouteImport.update({
-  id: '/auth/login',
-  path: '/auth/login',
+const AdminSplatRoute = AdminSplatRouteImport.update({
+  id: '/admin/$',
+  path: '/admin/$',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthForgotRoute = AuthForgotRouteImport.update({
@@ -113,9 +74,54 @@ const AuthForgotRoute = AuthForgotRouteImport.update({
   path: '/auth/forgot',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AdminSplatRoute = AdminSplatRouteImport.update({
-  id: '/admin/$',
-  path: '/admin/$',
+const AuthLoginRoute = AuthLoginRouteImport.update({
+  id: '/auth/login',
+  path: '/auth/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRegisterRoute = AuthRegisterRouteImport.update({
+  id: '/auth/register',
+  path: '/auth/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoleSelectRoute = AuthRoleSelectRouteImport.update({
+  id: '/auth/role-select',
+  path: '/auth/role-select',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClientIndexRoute = ClientIndexRouteImport.update({
+  id: '/client/',
+  path: '/client/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClientSplatRoute = ClientSplatRouteImport.update({
+  id: '/client/$',
+  path: '/client/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MerchantIndexRoute = MerchantIndexRouteImport.update({
+  id: '/merchant/',
+  path: '/merchant/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MerchantSplatRoute = MerchantSplatRouteImport.update({
+  id: '/merchant/$',
+  path: '/merchant/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MerchantEmployeesRoute = MerchantEmployeesRouteImport.update({
+  id: '/merchant/employees',
+  path: '/merchant/employees',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StaffIndexRoute = StaffIndexRouteImport.update({
+  id: '/staff/',
+  path: '/staff/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StaffSplatRoute = StaffSplatRouteImport.update({
+  id: '/staff/$',
+  path: '/staff/$',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -133,6 +139,7 @@ export interface FileRoutesByFullPath {
   '/auth/role-select': typeof AuthRoleSelectRoute
   '/client/$': typeof ClientSplatRoute
   '/merchant/$': typeof MerchantSplatRoute
+  '/merchant/employees': typeof MerchantEmployeesRoute
   '/staff/$': typeof StaffSplatRoute
   '/admin/': typeof AdminIndexRoute
   '/client/': typeof ClientIndexRoute
@@ -153,6 +160,7 @@ export interface FileRoutesByTo {
   '/auth/role-select': typeof AuthRoleSelectRoute
   '/client/$': typeof ClientSplatRoute
   '/merchant/$': typeof MerchantSplatRoute
+  '/merchant/employees': typeof MerchantEmployeesRoute
   '/staff/$': typeof StaffSplatRoute
   '/admin': typeof AdminIndexRoute
   '/client': typeof ClientIndexRoute
@@ -174,6 +182,7 @@ export interface FileRoutesById {
   '/auth/role-select': typeof AuthRoleSelectRoute
   '/client/$': typeof ClientSplatRoute
   '/merchant/$': typeof MerchantSplatRoute
+  '/merchant/employees': typeof MerchantEmployeesRoute
   '/staff/$': typeof StaffSplatRoute
   '/admin/': typeof AdminIndexRoute
   '/client/': typeof ClientIndexRoute
@@ -196,6 +205,7 @@ export interface FileRouteTypes {
     | '/auth/role-select'
     | '/client/$'
     | '/merchant/$'
+    | '/merchant/employees'
     | '/staff/$'
     | '/admin/'
     | '/client/'
@@ -216,6 +226,7 @@ export interface FileRouteTypes {
     | '/auth/role-select'
     | '/client/$'
     | '/merchant/$'
+    | '/merchant/employees'
     | '/staff/$'
     | '/admin'
     | '/client'
@@ -236,6 +247,7 @@ export interface FileRouteTypes {
     | '/auth/role-select'
     | '/client/$'
     | '/merchant/$'
+    | '/merchant/employees'
     | '/staff/$'
     | '/admin/'
     | '/client/'
@@ -257,6 +269,7 @@ export interface RootRouteChildren {
   AuthRoleSelectRoute: typeof AuthRoleSelectRoute
   ClientSplatRoute: typeof ClientSplatRoute
   MerchantSplatRoute: typeof MerchantSplatRoute
+  MerchantEmployeesRoute: typeof MerchantEmployeesRoute
   StaffSplatRoute: typeof StaffSplatRoute
   AdminIndexRoute: typeof AdminIndexRoute
   ClientIndexRoute: typeof ClientIndexRoute
@@ -266,32 +279,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/terms': {
-      id: '/terms'
-      path: '/terms'
-      fullPath: '/terms'
-      preLoaderRoute: typeof TermsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/privacy': {
-      id: '/privacy'
-      path: '/privacy'
-      fullPath: '/privacy'
-      preLoaderRoute: typeof PrivacyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/pricing': {
-      id: '/pricing'
-      path: '/pricing'
-      fullPath: '/pricing'
-      preLoaderRoute: typeof PricingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -301,32 +293,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/staff/': {
-      id: '/staff/'
-      path: '/staff'
-      fullPath: '/staff/'
-      preLoaderRoute: typeof StaffIndexRouteImport
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/merchant/': {
-      id: '/merchant/'
-      path: '/merchant'
-      fullPath: '/merchant/'
-      preLoaderRoute: typeof MerchantIndexRouteImport
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/client/': {
-      id: '/client/'
-      path: '/client'
-      fullPath: '/client/'
-      preLoaderRoute: typeof ClientIndexRouteImport
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/': {
@@ -336,46 +328,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/staff/$': {
-      id: '/staff/$'
-      path: '/staff/$'
-      fullPath: '/staff/$'
-      preLoaderRoute: typeof StaffSplatRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/merchant/$': {
-      id: '/merchant/$'
-      path: '/merchant/$'
-      fullPath: '/merchant/$'
-      preLoaderRoute: typeof MerchantSplatRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/client/$': {
-      id: '/client/$'
-      path: '/client/$'
-      fullPath: '/client/$'
-      preLoaderRoute: typeof ClientSplatRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/auth/role-select': {
-      id: '/auth/role-select'
-      path: '/auth/role-select'
-      fullPath: '/auth/role-select'
-      preLoaderRoute: typeof AuthRoleSelectRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/auth/register': {
-      id: '/auth/register'
-      path: '/auth/register'
-      fullPath: '/auth/register'
-      preLoaderRoute: typeof AuthRegisterRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/auth/login': {
-      id: '/auth/login'
-      path: '/auth/login'
-      fullPath: '/auth/login'
-      preLoaderRoute: typeof AuthLoginRouteImport
+    '/admin/$': {
+      id: '/admin/$'
+      path: '/admin/$'
+      fullPath: '/admin/$'
+      preLoaderRoute: typeof AdminSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth/forgot': {
@@ -385,11 +342,74 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthForgotRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/admin/$': {
-      id: '/admin/$'
-      path: '/admin/$'
-      fullPath: '/admin/$'
-      preLoaderRoute: typeof AdminSplatRouteImport
+    '/auth/login': {
+      id: '/auth/login'
+      path: '/auth/login'
+      fullPath: '/auth/login'
+      preLoaderRoute: typeof AuthLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/register': {
+      id: '/auth/register'
+      path: '/auth/register'
+      fullPath: '/auth/register'
+      preLoaderRoute: typeof AuthRegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/role-select': {
+      id: '/auth/role-select'
+      path: '/auth/role-select'
+      fullPath: '/auth/role-select'
+      preLoaderRoute: typeof AuthRoleSelectRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/client/': {
+      id: '/client/'
+      path: '/client'
+      fullPath: '/client/'
+      preLoaderRoute: typeof ClientIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/client/$': {
+      id: '/client/$'
+      path: '/client/$'
+      fullPath: '/client/$'
+      preLoaderRoute: typeof ClientSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/merchant/': {
+      id: '/merchant/'
+      path: '/merchant'
+      fullPath: '/merchant/'
+      preLoaderRoute: typeof MerchantIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/merchant/$': {
+      id: '/merchant/$'
+      path: '/merchant/$'
+      fullPath: '/merchant/$'
+      preLoaderRoute: typeof MerchantSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/merchant/employees': {
+      id: '/merchant/employees'
+      path: '/merchant/employees'
+      fullPath: '/merchant/employees'
+      preLoaderRoute: typeof MerchantEmployeesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staff/': {
+      id: '/staff/'
+      path: '/staff'
+      fullPath: '/staff/'
+      preLoaderRoute: typeof StaffIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staff/$': {
+      id: '/staff/$'
+      path: '/staff/$'
+      fullPath: '/staff/$'
+      preLoaderRoute: typeof StaffSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -409,6 +429,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoleSelectRoute: AuthRoleSelectRoute,
   ClientSplatRoute: ClientSplatRoute,
   MerchantSplatRoute: MerchantSplatRoute,
+  MerchantEmployeesRoute: MerchantEmployeesRoute,
   StaffSplatRoute: StaffSplatRoute,
   AdminIndexRoute: AdminIndexRoute,
   ClientIndexRoute: ClientIndexRoute,
@@ -418,3 +439,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
