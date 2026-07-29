@@ -12,8 +12,8 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: "صالون AI — منصة إدارة الصالونات ومراكز التجميل بالذكاء الاصطناعي" },
       { name: "description", content: "أدر صالونك بذكاء: حجوزات فورية، CRM كامل، محفظة ونقاط ولاء، مدفوعات، ومساعد AI عربي — جرّب مجاناً." },
-      { property: "og:title", content: "صالون AI — أدر صالونك بالذكاء الاصطناعي" },
-      { property: "og:description", content: "منصة سعودية متكاملة لإدارة الصالونات ومحلات الكوافير." },
+      { property: "og:title", content: "صالون AI — منصة إدارة الصالونات ومراكز التجميل بالذكاء الاصطناعي" },
+      { property: "og:description", content: "أدر صالونك بذكاء: حجوزات فورية، CRM كامل، محفظة ونقاط ولاء، مدفوعات، ومساعد AI عربي — جرّب مجاناً." },
     ],
   }),
   component: Home,
