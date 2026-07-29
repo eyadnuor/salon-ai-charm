@@ -19,10 +19,14 @@ import { Route as StaffIndexRouteImport } from './routes/staff/index'
 import { Route as MerchantIndexRouteImport } from './routes/merchant/index'
 import { Route as ClientIndexRouteImport } from './routes/client/index'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
+import { Route as StaffSplatRouteImport } from './routes/staff/$'
+import { Route as MerchantSplatRouteImport } from './routes/merchant/$'
+import { Route as ClientSplatRouteImport } from './routes/client/$'
 import { Route as AuthRoleSelectRouteImport } from './routes/auth/role-select'
 import { Route as AuthRegisterRouteImport } from './routes/auth/register'
 import { Route as AuthLoginRouteImport } from './routes/auth/login'
 import { Route as AuthForgotRouteImport } from './routes/auth/forgot'
+import { Route as AdminSplatRouteImport } from './routes/admin/$'
 
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
@@ -74,6 +78,21 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
   path: '/admin/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StaffSplatRoute = StaffSplatRouteImport.update({
+  id: '/staff/$',
+  path: '/staff/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MerchantSplatRoute = MerchantSplatRouteImport.update({
+  id: '/merchant/$',
+  path: '/merchant/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClientSplatRoute = ClientSplatRouteImport.update({
+  id: '/client/$',
+  path: '/client/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthRoleSelectRoute = AuthRoleSelectRouteImport.update({
   id: '/auth/role-select',
   path: '/auth/role-select',
@@ -94,6 +113,11 @@ const AuthForgotRoute = AuthForgotRouteImport.update({
   path: '/auth/forgot',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminSplatRoute = AdminSplatRouteImport.update({
+  id: '/admin/$',
+  path: '/admin/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -102,10 +126,14 @@ export interface FileRoutesByFullPath {
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
+  '/admin/$': typeof AdminSplatRoute
   '/auth/forgot': typeof AuthForgotRoute
   '/auth/login': typeof AuthLoginRoute
   '/auth/register': typeof AuthRegisterRoute
   '/auth/role-select': typeof AuthRoleSelectRoute
+  '/client/$': typeof ClientSplatRoute
+  '/merchant/$': typeof MerchantSplatRoute
+  '/staff/$': typeof StaffSplatRoute
   '/admin/': typeof AdminIndexRoute
   '/client/': typeof ClientIndexRoute
   '/merchant/': typeof MerchantIndexRoute
@@ -118,10 +146,14 @@ export interface FileRoutesByTo {
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
+  '/admin/$': typeof AdminSplatRoute
   '/auth/forgot': typeof AuthForgotRoute
   '/auth/login': typeof AuthLoginRoute
   '/auth/register': typeof AuthRegisterRoute
   '/auth/role-select': typeof AuthRoleSelectRoute
+  '/client/$': typeof ClientSplatRoute
+  '/merchant/$': typeof MerchantSplatRoute
+  '/staff/$': typeof StaffSplatRoute
   '/admin': typeof AdminIndexRoute
   '/client': typeof ClientIndexRoute
   '/merchant': typeof MerchantIndexRoute
@@ -135,10 +167,14 @@ export interface FileRoutesById {
   '/pricing': typeof PricingRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
+  '/admin/$': typeof AdminSplatRoute
   '/auth/forgot': typeof AuthForgotRoute
   '/auth/login': typeof AuthLoginRoute
   '/auth/register': typeof AuthRegisterRoute
   '/auth/role-select': typeof AuthRoleSelectRoute
+  '/client/$': typeof ClientSplatRoute
+  '/merchant/$': typeof MerchantSplatRoute
+  '/staff/$': typeof StaffSplatRoute
   '/admin/': typeof AdminIndexRoute
   '/client/': typeof ClientIndexRoute
   '/merchant/': typeof MerchantIndexRoute
@@ -153,10 +189,14 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/privacy'
     | '/terms'
+    | '/admin/$'
     | '/auth/forgot'
     | '/auth/login'
     | '/auth/register'
     | '/auth/role-select'
+    | '/client/$'
+    | '/merchant/$'
+    | '/staff/$'
     | '/admin/'
     | '/client/'
     | '/merchant/'
@@ -169,10 +209,14 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/privacy'
     | '/terms'
+    | '/admin/$'
     | '/auth/forgot'
     | '/auth/login'
     | '/auth/register'
     | '/auth/role-select'
+    | '/client/$'
+    | '/merchant/$'
+    | '/staff/$'
     | '/admin'
     | '/client'
     | '/merchant'
@@ -185,10 +229,14 @@ export interface FileRouteTypes {
     | '/pricing'
     | '/privacy'
     | '/terms'
+    | '/admin/$'
     | '/auth/forgot'
     | '/auth/login'
     | '/auth/register'
     | '/auth/role-select'
+    | '/client/$'
+    | '/merchant/$'
+    | '/staff/$'
     | '/admin/'
     | '/client/'
     | '/merchant/'
@@ -202,10 +250,14 @@ export interface RootRouteChildren {
   PricingRoute: typeof PricingRoute
   PrivacyRoute: typeof PrivacyRoute
   TermsRoute: typeof TermsRoute
+  AdminSplatRoute: typeof AdminSplatRoute
   AuthForgotRoute: typeof AuthForgotRoute
   AuthLoginRoute: typeof AuthLoginRoute
   AuthRegisterRoute: typeof AuthRegisterRoute
   AuthRoleSelectRoute: typeof AuthRoleSelectRoute
+  ClientSplatRoute: typeof ClientSplatRoute
+  MerchantSplatRoute: typeof MerchantSplatRoute
+  StaffSplatRoute: typeof StaffSplatRoute
   AdminIndexRoute: typeof AdminIndexRoute
   ClientIndexRoute: typeof ClientIndexRoute
   MerchantIndexRoute: typeof MerchantIndexRoute
@@ -284,6 +336,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/staff/$': {
+      id: '/staff/$'
+      path: '/staff/$'
+      fullPath: '/staff/$'
+      preLoaderRoute: typeof StaffSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/merchant/$': {
+      id: '/merchant/$'
+      path: '/merchant/$'
+      fullPath: '/merchant/$'
+      preLoaderRoute: typeof MerchantSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/client/$': {
+      id: '/client/$'
+      path: '/client/$'
+      fullPath: '/client/$'
+      preLoaderRoute: typeof ClientSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/auth/role-select': {
       id: '/auth/role-select'
       path: '/auth/role-select'
@@ -312,6 +385,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthForgotRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/$': {
+      id: '/admin/$'
+      path: '/admin/$'
+      fullPath: '/admin/$'
+      preLoaderRoute: typeof AdminSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -322,10 +402,14 @@ const rootRouteChildren: RootRouteChildren = {
   PricingRoute: PricingRoute,
   PrivacyRoute: PrivacyRoute,
   TermsRoute: TermsRoute,
+  AdminSplatRoute: AdminSplatRoute,
   AuthForgotRoute: AuthForgotRoute,
   AuthLoginRoute: AuthLoginRoute,
   AuthRegisterRoute: AuthRegisterRoute,
   AuthRoleSelectRoute: AuthRoleSelectRoute,
+  ClientSplatRoute: ClientSplatRoute,
+  MerchantSplatRoute: MerchantSplatRoute,
+  StaffSplatRoute: StaffSplatRoute,
   AdminIndexRoute: AdminIndexRoute,
   ClientIndexRoute: ClientIndexRoute,
   MerchantIndexRoute: MerchantIndexRoute,
