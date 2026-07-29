@@ -89,11 +89,11 @@ const statusConfig: Record<Employee["status"], { label: string; className: strin
   };
 
 const avatarGradients = [
-  "from-teal-600 to-cyan-500",
-  "from-sky-700 to-blue-500",
-  "from-amber-500 to-yellow-400",
-  "from-emerald-600 to-teal-500",
-  "from-emerald-500 to-teal-500",
+  "from-rose-700 to-rose-400",
+  "from-fuchsia-800 to-pink-400",
+  "from-amber-600 to-amber-300",
+  "from-violet-800 to-rose-400",
+  "from-stone-700 to-amber-500",
 ];
 
 function EmployeesPage() {
@@ -590,7 +590,7 @@ function EmployeeCard({
       )}
     >
       {!compact && (
-        <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-l from-primary via-teal-500 to-amber-400" />
+        <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-l from-primary via-rose-400 to-amber-300" />
       )}
       <div className={cn("flex items-start gap-3", compact && "sm:min-w-64")}>
         <Avatar className="h-14 w-14 border-2 border-background shadow-soft ring-4 ring-primary/5">

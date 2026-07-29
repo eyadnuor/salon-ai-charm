@@ -16,11 +16,11 @@ export const Route = createFileRoute("/merchant/services")({
 });
 
 const categoryTone: Record<string, string> = {
-  شعر: "from-sky-600 to-cyan-500",
-  مكياج: "from-amber-500 to-orange-400",
-  أظافر: "from-teal-600 to-emerald-500",
-  بشرة: "from-indigo-600 to-sky-500",
-  سبا: "from-emerald-600 to-cyan-500",
+  شعر: "from-rose-800 to-rose-400",
+  مكياج: "from-amber-600 to-amber-300",
+  أظافر: "from-fuchsia-800 to-pink-400",
+  بشرة: "from-violet-800 to-rose-400",
+  سبا: "from-stone-700 to-amber-500",
 };
 
 function ServicesPage() {
