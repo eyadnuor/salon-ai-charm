@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import {
   BriefcaseBusiness,
@@ -6,6 +6,8 @@ import {
   Grid2X2,
   List,
   Mail,
+  Banknote,
+  Pencil,
   MoreHorizontal,
   Phone,
   Plus,
@@ -24,6 +26,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Dialog,
   DialogContent,
@@ -98,6 +101,9 @@ function EmployeesPage() {
   const [status, setStatus] = useState("all");
   const [view, setView] = useState<"grid" | "list">("grid");
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(false);
+  const [selectedEmployee, setSelectedEmployee] = useState<Employee | null>(null);
+  const [employeeDraft, setEmployeeDraft] = useState<Employee | null>(null);
   const [team, setTeam] = useState(employees);
   const [newEmployee, setNewEmployee] = useState({
     name: "",
@@ -150,6 +156,27 @@ function EmployeesPage() {
     setNewEmployee({ name: "", role: "", phone: "", email: "" });
     setDialogOpen(false);
     toast.success("تمت إضافة الموظفة بنجاح");
+  }
+
+  function openEmployeeProfile(employee: Employee) {
+    setSelectedEmployee(employee);
+    setEmployeeDraft({ ...employee, services: [...employee.services] });
+    setProfileOpen(true);
+  }
+
+  function saveEmployee() {
+    if (!employeeDraft || !employeeDraft.name.trim() || !employeeDraft.role.trim()) {
+      toast.error("الاسم والمسمى الوظيفي مطلوبان");
+      return;
+    }
+    setTeam((current) =>
+      current.map((employee) =>
+        employee.id === employeeDraft.id ? { ...employeeDraft } : employee,
+      ),
+    );
+    setSelectedEmployee({ ...employeeDraft });
+    setProfileOpen(false);
+    toast.success("تم حفظ بيانات الموظفة");
   }
 
   return (
@@ -311,6 +338,7 @@ function EmployeesPage() {
               employee={employee}
               index={index}
               compact={view === "list"}
+              onOpen={openEmployeeProfile}
             />
           ))}
           {filteredEmployees.length === 0 && (
@@ -326,6 +354,213 @@ function EmployeesPage() {
           )}
         </div>
       </Card>
+
+      <Dialog open={profileOpen} onOpenChange={setProfileOpen}>
+        <DialogContent className="max-h-[92vh] overflow-y-auto sm:max-w-3xl" dir="rtl">
+          {employeeDraft && selectedEmployee && (
+            <>
+              <div className="relative -mx-6 -mt-6 overflow-hidden rounded-t-lg bg-gradient-to-l from-primary via-violet-600 to-fuchsia-500 px-6 pb-6 pt-8 text-white">
+                <div className="absolute -left-12 -top-16 h-44 w-44 rounded-full bg-white/10 blur-2xl" />
+                <div className="relative flex items-center gap-4">
+                  <Avatar className="h-20 w-20 border-4 border-white/25 shadow-xl">
+                    <AvatarFallback className="bg-white/20 text-xl font-black text-white">
+                      {employeeDraft.name
+                        .split(" ")
+                        .map((part) => part[0])
+                        .slice(0, 2)
+                        .join("")}
+                    </AvatarFallback>
+                  </Avatar>
+                  <div>
+                    <DialogTitle className="text-xl font-black text-white">
+                      {selectedEmployee.name}
+                    </DialogTitle>
+                    <DialogDescription className="mt-1 text-white/75">
+                      {selectedEmployee.role} · ملف الموظفة
+                    </DialogDescription>
+                    <Badge className="mt-3 border-white/20 bg-white/15 text-white hover:bg-white/20">
+                      {statusConfig[selectedEmployee.status].label}
+                    </Badge>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid gap-6 py-2 lg:grid-cols-[1fr_240px]">
+                <div>
+                  <div className="mb-3 flex items-center gap-2">
+                    <Pencil className="h-4 w-4 text-primary" />
+                    <h3 className="font-black">البيانات الأساسية</h3>
+                  </div>
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    <LabeledInput
+                      label="الاسم الكامل"
+                      value={employeeDraft.name}
+                      onChange={(value) =>
+                        setEmployeeDraft((current) =>
+                          current ? { ...current, name: value } : current,
+                        )
+                      }
+                    />
+                    <LabeledInput
+                      label="المسمى الوظيفي"
+                      value={employeeDraft.role}
+                      onChange={(value) =>
+                        setEmployeeDraft((current) =>
+                          current ? { ...current, role: value } : current,
+                        )
+                      }
+                    />
+                    <LabeledInput
+                      label="رقم الجوال"
+                      value={employeeDraft.phone}
+                      onChange={(value) =>
+                        setEmployeeDraft((current) =>
+                          current ? { ...current, phone: value } : current,
+                        )
+                      }
+                    />
+                    <LabeledInput
+                      label="البريد الإلكتروني"
+                      value={employeeDraft.email}
+                      type="email"
+                      onChange={(value) =>
+                        setEmployeeDraft((current) =>
+                          current ? { ...current, email: value } : current,
+                        )
+                      }
+                    />
+                    <LabeledInput
+                      label="الراتب الشهري"
+                      value={String(employeeDraft.salary)}
+                      type="number"
+                      suffix="ر.س"
+                      onChange={(value) =>
+                        setEmployeeDraft((current) =>
+                          current ? { ...current, salary: Number(value) } : current,
+                        )
+                      }
+                    />
+                    <LabeledInput
+                      label="نسبة العمولة"
+                      value={String(employeeDraft.commissionRate)}
+                      type="number"
+                      suffix="%"
+                      onChange={(value) =>
+                        setEmployeeDraft((current) =>
+                          current ? { ...current, commissionRate: Number(value) } : current,
+                        )
+                      }
+                    />
+                    <div className="sm:col-span-2">
+                      <label className="mb-1.5 block text-xs font-bold text-muted-foreground">
+                        حالة الموظفة
+                      </label>
+                      <Select
+                        value={employeeDraft.status}
+                        onValueChange={(value: Employee["status"]) =>
+                          setEmployeeDraft((current) =>
+                            current ? { ...current, status: value } : current,
+                          )
+                        }
+                      >
+                        <SelectTrigger>
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="active">على رأس العمل</SelectItem>
+                          <SelectItem value="on-leave">في إجازة</SelectItem>
+                          <SelectItem value="inactive">غير نشط</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </div>
+
+                  <div className="mb-3 mt-6 flex items-center gap-2">
+                    <BriefcaseBusiness className="h-4 w-4 text-primary" />
+                    <h3 className="font-black">الخدمات التي تقدمها</h3>
+                  </div>
+                  <div className="grid gap-2 sm:grid-cols-2">
+                    {services.map((service) => {
+                      const checked = employeeDraft.services.includes(service.id);
+                      return (
+                        <label
+                          key={service.id}
+                          className={cn(
+                            "flex cursor-pointer items-center gap-3 rounded-xl border p-3 text-sm transition",
+                            checked ? "border-primary/30 bg-primary/5" : "hover:bg-muted/50",
+                          )}
+                        >
+                          <Checkbox
+                            checked={checked}
+                            onCheckedChange={(value) =>
+                              setEmployeeDraft((current) => {
+                                if (!current) return current;
+                                return {
+                                  ...current,
+                                  services: value
+                                    ? [...current.services, service.id]
+                                    : current.services.filter((id) => id !== service.id),
+                                };
+                              })
+                            }
+                          />
+                          <span className="flex-1 font-medium">{service.name}</span>
+                          <span className="text-[10px] text-muted-foreground">
+                            {service.duration} د
+                          </span>
+                        </label>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <h3 className="font-black">ملخص الأداء</h3>
+                  <ProfileStat
+                    icon={<CalendarCheck className="h-4 w-4" />}
+                    label="حجوزات الشهر"
+                    value={employeeDraft.bookingsThisMonth}
+                  />
+                  <ProfileStat
+                    icon={<Star className="h-4 w-4" />}
+                    label="تقييم العملاء"
+                    value={`${employeeDraft.rating}/5`}
+                  />
+                  <ProfileStat
+                    icon={<Banknote className="h-4 w-4" />}
+                    label="الراتب"
+                    value={`${employeeDraft.salary.toLocaleString()} ر.س`}
+                  />
+                  <Card className="border-0 bg-gradient-soft p-4 shadow-none">
+                    <div className="text-xs text-muted-foreground">التكلفة التقديرية</div>
+                    <div className="mt-1 text-xl font-black">
+                      {Math.round(
+                        employeeDraft.salary +
+                          employeeDraft.bookingsThisMonth *
+                            100 *
+                            (employeeDraft.commissionRate / 100),
+                      ).toLocaleString()}{" "}
+                      ر.س
+                    </div>
+                    <p className="mt-2 text-[10px] leading-relaxed text-muted-foreground">
+                      الراتب الأساسي مع تقدير عمولات حجوزات الشهر.
+                    </p>
+                  </Card>
+                </div>
+              </div>
+
+              <DialogFooter className="gap-2 sm:justify-start">
+                <Button onClick={saveEmployee} className="bg-gradient-brand">
+                  حفظ التعديلات
+                </Button>
+                <Button variant="outline" onClick={() => setProfileOpen(false)}>
+                  إلغاء
+                </Button>
+              </DialogFooter>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </AppShell>
   );
 }
@@ -334,10 +569,12 @@ function EmployeeCard({
   employee,
   index,
   compact,
+  onOpen,
 }: {
   employee: Employee;
   index: number;
   compact: boolean;
+  onOpen: (employee: Employee) => void;
 }) {
   const employeeServices = employee.services
     .map((serviceId) => services.find((service) => service.id === serviceId)?.name)
@@ -348,12 +585,15 @@ function EmployeeCard({
   return (
     <div
       className={cn(
-        "group rounded-2xl border bg-card p-5 transition-all hover:-translate-y-0.5 hover:border-primary/25 hover:shadow-elegant",
+        "group relative overflow-hidden rounded-3xl border bg-card p-5 transition-all hover:-translate-y-1 hover:border-primary/25 hover:shadow-elegant",
         compact && "flex flex-col gap-4 sm:flex-row sm:items-center",
       )}
     >
+      {!compact && (
+        <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-l from-primary via-fuchsia-500 to-pink-400" />
+      )}
       <div className={cn("flex items-start gap-3", compact && "sm:min-w-64")}>
-        <Avatar className="h-12 w-12 border-2 border-background shadow-soft">
+        <Avatar className="h-14 w-14 border-2 border-background shadow-soft ring-4 ring-primary/5">
           <AvatarFallback
             className={cn(
               "bg-gradient-to-br text-sm font-black text-white",
@@ -374,7 +614,7 @@ function EmployeeCard({
           </div>
           <p className="mt-0.5 truncate text-xs text-muted-foreground">{employee.role}</p>
         </div>
-        {!compact && <EmployeeMenu name={employee.name} />}
+        {!compact && <EmployeeMenu employee={employee} onOpen={onOpen} />}
       </div>
 
       <div className={cn("mt-5 grid grid-cols-3 gap-2", compact && "mt-0 sm:flex-1")}>
@@ -417,6 +657,14 @@ function EmployeeCard({
         </Badge>
         <div className="flex items-center gap-1">
           <Button
+            size="sm"
+            variant="outline"
+            className="h-8 rounded-lg text-xs font-bold"
+            onClick={() => onOpen(employee)}
+          >
+            عرض الملف
+          </Button>
+          <Button
             variant="ghost"
             size="icon"
             className="h-8 w-8"
@@ -432,7 +680,7 @@ function EmployeeCard({
           >
             <Mail className="h-3.5 w-3.5" />
           </Button>
-          {compact && <EmployeeMenu name={employee.name} />}
+          {compact && <EmployeeMenu employee={employee} onOpen={onOpen} />}
         </div>
       </div>
     </div>
@@ -459,17 +707,23 @@ function MiniStat({
   );
 }
 
-function EmployeeMenu({ name }: { name: string }) {
+function EmployeeMenu({
+  employee,
+  onOpen,
+}: {
+  employee: Employee;
+  onOpen: (employee: Employee) => void;
+}) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon" className="h-8 w-8 shrink-0">
           <MoreHorizontal className="h-4 w-4" />
-          <span className="sr-only">خيارات {name}</span>
+          <span className="sr-only">خيارات {employee.name}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start">
-        <DropdownMenuItem>
+        <DropdownMenuItem onClick={() => onOpen(employee)}>
           <BriefcaseBusiness className="ml-2 h-4 w-4" />
           عرض الملف
         </DropdownMenuItem>
@@ -485,5 +739,60 @@ function EmployeeMenu({ name }: { name: string }) {
         <DropdownMenuItem className="text-destructive">إيقاف الحساب</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
+  );
+}
+
+function LabeledInput({
+  label,
+  value,
+  onChange,
+  type = "text",
+  suffix,
+}: {
+  label: string;
+  value: string;
+  onChange: (value: string) => void;
+  type?: string;
+  suffix?: string;
+}) {
+  return (
+    <label>
+      <span className="mb-1.5 block text-xs font-bold text-muted-foreground">{label}</span>
+      <div className="relative">
+        <Input
+          type={type}
+          value={value}
+          onChange={(event) => onChange(event.target.value)}
+          className={suffix ? "pl-12" : undefined}
+        />
+        {suffix && (
+          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-xs text-muted-foreground">
+            {suffix}
+          </span>
+        )}
+      </div>
+    </label>
+  );
+}
+
+function ProfileStat({
+  icon,
+  label,
+  value,
+}: {
+  icon: ReactNode;
+  label: string;
+  value: string | number;
+}) {
+  return (
+    <div className="flex items-center gap-3 rounded-2xl border bg-card p-3.5">
+      <div className="grid h-9 w-9 place-items-center rounded-xl bg-primary/10 text-primary">
+        {icon}
+      </div>
+      <div>
+        <div className="text-[10px] text-muted-foreground">{label}</div>
+        <div className="mt-0.5 text-sm font-black">{value}</div>
+      </div>
+    </div>
   );
 }
